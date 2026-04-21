@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: online-mini-shop
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    # Uncomment the following block if you are on a paid Render plan
+    # and want to persist your SQLite database and uploaded images.
+    # Disks are not supported on the Free instance type.
+    # disk:
+    #   name: app-data
+    #   mountPath: /opt/render/project/src/data
+    #   sizeGB: 1
