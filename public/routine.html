@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBSTU ICT 4Y 1S Class Routine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .routine-table th {
+            background-color: #1e3a8a;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 1rem;
+        }
+        .routine-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background-color 0.2s;
+        }
+        .routine-table tr:hover td {
+            background-color: #f1f5f9;
+        }
+        .course-box {
+            background: white;
+            padding: 0.6rem;
+            border-radius: 0.375rem;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .lab-box {
+            border-left-color: #10b981;
+            background-color: #ecfdf5;
+        }
+        .break-row {
+            background-color: #fef3c7 !important;
+            font-weight: 600;
+            color: #92400e;
+        }
+        /* Ensure the capture area can expand during download */
+        #routine-capture-area.downloading {
+            width: 1280px !important;
+            max-width: none !important;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="routine-capture-area" class="max-w-7xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden border border-slate-200">
+        <!-- Header -->
+        <div class="bg-blue-900 text-white p-6 md:p-8 text-center relative">
+            <div class="md:absolute md:top-6 md:right-6 mb-4 md:mb-0 download-btn-container" data-html2canvas-ignore="true">
+                <button id="downloadBtn" onclick="downloadRoutine()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 transition-all active:scale-95 text-sm font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    <span>Download Full Image</span>
+                </button>
+            </div>
+
+            <h1 class="text-2xl md:text-3xl font-bold mb-2 uppercase tracking-tight">Department of ICT, MBSTU</h1>
+            <p class="text-blue-200 text-lg font-medium">BSc. Engg. 4th Year 1st Semester Routine</p>
+            <div class="mt-4 inline-flex items-center space-x-4 bg-blue-800 px-4 py-2 rounded-full text-xs md:text-sm font-medium">
+                <span>Effective from: 11th April 2026</span>
+                <span class="h-4 w-px bg-blue-700"></span>
+                <span>Session: 2021-2022</span>
+            </div>
+        </div>
+
+        <!-- Routine Table Container -->
+        <div id="table-scroll-wrapper" class="overflow-x-auto">
+            <table id="main-table" class="w-full routine-table border-collapse text-xs md:text-sm min-w-[1000px]">
+                <thead>
+                    <tr>
+                        <th class="text-left sticky left-0 z-10 bg-blue-900 w-24">Day</th>
+                        <th class="w-32">09:00 - 09:45</th>
+                        <th class="w-32">09:50 - 10:35</th>
+                        <th class="w-32">10:40 - 11:25</th>
+                        <th class="w-32">11:30 - 12:15</th>
+                        <th class="w-32">12:20 - 01:05</th>
+                        <th class="break-row w-16">Break</th>
+                        <th class="w-32">02:00 - 02:45</th>
+                        <th class="w-32">02:50 - 03:40</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Saturday -->
+                    <tr>
+                        <td class="font-bold text-slate-700 bg-slate-50 sticky left-0 border-r border-slate-200">Saturday</td>
+                        <td class="bg-slate-50"></td>
+                        <td class="bg-slate-50"></td>
+                        <td class="bg-slate-50"></td>
+                        <td class="bg-slate-50"></td>
+                        <td class="bg-slate-50"></td>
+                        <td rowspan="5" class="break-row text-center align-middle whitespace-nowrap">
+                            <div class="rotate-180 [writing-mode:vertical-lr] text-xs uppercase tracking-widest">Prayer & Lunch</div>
+                        </td>
+                        
+                        <td class="bg-slate-50"></td>
+                    </tr>
+
+                    <!-- Sunday -->
+                    <tr>
+                        <td class="font-bold text-slate-700 bg-slate-50 sticky left-0 border-r border-slate-200">Sunday</td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4101 (SW)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td class="bg-slate-50"></td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4103 (MNA)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td class="bg-slate-50"></td>
+                        <td class="bg-slate-50"></td>
+                        <td colspan="2">
+                            <div class="course-box lab-box">
+                                <p class="font-bold text-emerald-900">ICT-4115 (ZR)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Monday -->
+                    <tr>
+                        <td class="font-bold text-slate-700 bg-slate-50 sticky left-0 border-r border-slate-200">Monday</td>
+                        <td class="bg-slate-50"></td>
+                        <td colspan="2">
+                            <div class="course-box lab-box">
+                                <p class="font-bold text-blue-900">ICT-4105 (MM)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4103 (MNA)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4101 (SW)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="course-box lab-box">
+                                <p class="font-bold text-emerald-900">ICT-4106 Lab (MM)</p>
+                                <p class="text-[10px] text-emerald-700 font-medium uppercase">Room R-227</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Tuesday -->
+                    <tr>
+                        <td class="font-bold text-slate-700 bg-slate-50 sticky left-0 border-r border-slate-200">Tuesday</td>
+                        <td colspan="2">
+                            <div class="course-box lab-box">
+                                <p class="font-bold text-emerald-900">ICT-4104 Lab (MNA)</p>
+                                <p class="text-[10px] text-emerald-700 font-medium uppercase">Room R-226(A)</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4103 (MNA)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-box border-l-slate-400 bg-slate-50">
+                                <p class="font-bold text-slate-800">ICT-4000</p>
+                                <p class="text-[10px] text-slate-500 uppercase font-medium">Thesis (Thesis Room)</p>
+                            </div>
+                        </td>
+                        <td>    </td>
+                         <td>
+                            <div class="course-box border-l-slate-400 bg-slate-50">
+                                <p class="font-bold text-slate-800">ICT-4000</p>
+                                <p class="text-[10px] text-slate-500 uppercase font-medium">Thesis (Thesis Room)</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4105 (MM)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Wednesday -->
+                    <tr>
+                        <td class="font-bold text-slate-700 bg-slate-50 sticky left-0 border-r border-slate-200">Wednesday</td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4101 (SW)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td class="bg-slate-50"></td>
+                        <td class="bg-slate-50"></td>
+                        <td>
+                            <div class="course-box">
+                                <p class="font-bold text-blue-900">ICT-4115 (ZR)</p>
+                                <p class="text-[10px] text-slate-500 uppercase">Room R-206</p>
+                            </div>
+                        </td>
+                        <td class="bg-slate-50"></td>
+                        <td colspan="2">
+                            <div class="course-box lab-box">
+                                <p class="font-bold text-emerald-900">ICT-4102 Lab (SW)</p>
+                                <p class="text-[10px] text-emerald-700 font-medium uppercase">Room R-226(B)</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Legend -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-slate-50 border-t border-slate-200">
+            <div>
+                <h3 class="font-bold text-slate-800 mb-2 text-xs uppercase tracking-wider">Faculty</h3>
+                <div class="text-[11px] space-y-1 text-slate-600">
+                    <p><span class="font-bold text-blue-800 w-8 inline-block">MM</span> Prof. Dr. Monir Morshed</p>
+                    <p><span class="font-bold text-blue-800 w-8 inline-block">SW</span> Prof. Dr. Sajjad Waheed</p>
+                    <p><span class="font-bold text-blue-800 w-8 inline-block">MNA</span> Prof. Dr. Mst. Nargis Akter</p>
+                    <p><span class="font-bold text-blue-800 w-8 inline-block">ZR</span> Prof. Dr. Ziar Rahman</p>
+                </div>
+            </div>
+            <div class="md:col-span-2">
+                <h3 class="font-bold text-slate-800 mb-2 text-xs uppercase tracking-wider">Course Information</h3>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-slate-600">
+                    <p><strong>ICT-4101:</strong> Digital Mining</p>
+                    <p><strong>ICT-4102:</strong> Digital Mining Lab</p>
+                    <p><strong>ICT-4103:</strong> Digital Image Processing</p>
+                    <p><strong>ICT-4104:</strong> Digital Image Processing Lab</p>
+                    <p><strong>ICT-4105:</strong> Optical Communication</p>
+                    <p><strong>ICT-4106:</strong> Optical Communication Lab</p>
+                    <p><strong>ICT-4115:</strong> Cryptography & Cyber Law</p>
+                    <p><strong>ICT-4000:</strong> Thesis/Project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function downloadRoutine() {
+            const captureArea = document.getElementById('routine-capture-area');
+            const scrollWrapper = document.getElementById('table-scroll-wrapper');
+            const button = document.getElementById('downloadBtn');
+            
+            // Start visual loading state
+            button.disabled = true;
+            button.innerText = "Capturing Full View...";
+
+            try {
+                // To prevent cutting, we force the container to be wide enough for the entire table
+                // We calculate the actual width needed based on the table's scrollWidth
+                const originalWidth = captureArea.style.width;
+                const originalOverflow = scrollWrapper.style.overflow;
+                
+                const fullWidth = Math.max(1280, document.getElementById('main-table').scrollWidth + 40);
+                
+                // Temporarily expand the container for high-res capture
+                captureArea.style.width = fullWidth + 'px';
+                captureArea.style.maxWidth = 'none';
+                scrollWrapper.style.overflow = 'visible';
+
+                const canvas = await html2canvas(captureArea, {
+                    scale: 2, // 2x resolution for crisp text
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: "#ffffff",
+                    width: fullWidth,
+                    windowWidth: fullWidth
+                });
+
+                // Restore original styles
+                captureArea.style.width = originalWidth;
+                captureArea.style.maxWidth = '';
+                scrollWrapper.style.overflow = originalOverflow;
+
+                const link = document.createElement('a');
+                link.download = 'MBSTU_ICT_4Y1S_Routine_2026.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (err) {
+                console.error("Capture error:", err);
+            } finally {
+                // Restore button
+                button.disabled = false;
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    <span>Download Full Image</span>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
