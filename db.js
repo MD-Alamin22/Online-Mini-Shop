@@ -31,10 +31,15 @@ async function init() {
           name VARCHAR(255) NOT NULL,
           description TEXT,
           price DECIMAL(10, 2) NOT NULL,
-          image_url VARCHAR(255),
+          image_url TEXT,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
       `);
+      try {
+        await dbClient.query(`ALTER TABLE products ALTER COLUMN image_url TYPE TEXT;`);
+      } catch (e) {
+        // Ignore if alter fails
+      }
       await dbClient.query(`
         CREATE TABLE IF NOT EXISTS orders (
           id SERIAL PRIMARY KEY,
