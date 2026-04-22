@@ -68,12 +68,12 @@ router.post('/', authMiddleware, adminMiddleware, upload.single('image'), async 
     }
 
     const query = db.getQuery();
-    const [result] = await query(
-      'INSERT INTO products (name, description, price, image_url) VALUES (?, ?, ?, ?)',
+    const [rows] = await query(
+      'INSERT INTO products (name, description, price, image_url) VALUES ($1, $2, $3, $4) RETURNING id',
       [name, description, price, image_url || 'https://via.placeholder.com/300x200']
     );
 
-    res.status(201).json({ message: 'Product added successfully', productId: result.insertId });
+    res.status(201).json({ message: 'Product added successfully', productId: rows[0].id });
   } catch (error) {
     console.error('Add product error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -97,7 +97,7 @@ router.put('/:id', authMiddleware, adminMiddleware, upload.single('image'), asyn
 
     const query = db.getQuery();
     await query(
-      'UPDATE products SET name = ?, description = ?, price = ?, image_url = ? WHERE id = ?',
+      'UPDATE products SET name = $1, description = $2, price = $3, image_url = $4 WHERE id = $5',
       [name, description, price, image_url, id]
     );
 
@@ -113,7 +113,7 @@ router.delete('/:id', authMiddleware, adminMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
     const query = db.getQuery();
-    await query('DELETE FROM products WHERE id = ?', [id]);
+    await query('DELETE FROM products WHERE id = $1', [id]);
     res.json({ message: 'Product deleted successfully' });
   } catch (error) {
     console.error('Delete product error:', error);

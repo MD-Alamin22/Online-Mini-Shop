@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
     }
 
     const query = db.getQuery();
-    const [existing] = await query('SELECT * FROM users WHERE email = ?', [email]);
+    const [existing] = await query('SELECT * FROM users WHERE email = $1', [email]);
     
     if (existing.length > 0) {
       return res.status(400).json({ error: 'User already exists' });
@@ -26,12 +26,12 @@ router.post('/register', async (req, res) => {
 
     const userRole = role === 'admin' ? 'admin' : 'customer';
 
-    const [result] = await query(
-      'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
+    const [rows] = await query(
+      'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id',
       [name, email, hashedPassword, userRole]
     );
 
-    res.status(201).json({ message: 'User registered successfully', userId: result.insertId });
+    res.status(201).json({ message: 'User registered successfully', userId: rows[0].id });
 
   } catch (error) {
     console.error('Registration error:', error);
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
     }
 
     const query = db.getQuery();
-    const [users] = await query('SELECT * FROM users WHERE email = ?', [email]);
+    const [users] = await query('SELECT * FROM users WHERE email = $1', [email]);
 
     if (users.length === 0) {
       return res.status(400).json({ error: 'Invalid credentials' });
