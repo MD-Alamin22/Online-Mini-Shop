@@ -42,7 +42,8 @@
             <label class="form-label text-muted fw-semibold">Password</label>
             <input type="password" class="form-control form-control-lg" id="password" required placeholder="••••••••">
           </div>
-          <div class="mb-4 d-none">
+          <div class="mb-4">
+            <label class="form-label text-muted fw-semibold">Role</label>
             <select class="form-select form-control-lg" id="role">
               <option value="customer" selected>Customer</option>
               <option value="admin">Admin</option>
@@ -64,8 +65,7 @@
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      // We force customer register here. Admin can be created manually in DB or via a hidden flag.
-      const role = 'customer'; 
+      const role = document.getElementById('role').value; 
       const errorMsg = document.getElementById('error-msg');
       
       const res = await registerUser(name, email, password, role);
